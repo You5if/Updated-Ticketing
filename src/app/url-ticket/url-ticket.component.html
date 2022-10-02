@@ -1,0 +1,44 @@
+
+        <div class="ticketDets" >
+        <div fxLayout class="topDet">
+          <div fxLayout="column">
+            <!-- <h6 class="idClass1">ID: {{tickDet.ticketId}}</h6>
+        <h6 class="idClass1">Category: {{tickDet.category}}</h6>
+          </div>
+       
+        <div fxLayout="column">
+          <h6 class="idClass1">Agent: {{tickDet.openedBy}}</h6>
+        <h6 class="idClass1">Technician: {{tickDet.displayName}}</h6> -->
+        </div>
+        </div>
+        <div>
+          <div *ngFor="let comment of comments" class="attach" >
+            
+            <!-- <img *ngIf="!showit" [src]="imagePathUrl"  alt="" width="100px" height="100px"> -->
+    
+            <mat-card class="commentedCard">
+              <div class="userComment">
+                
+                <div *ngIf="comment.commentType === 'TEXT'" fxLayout="column">
+                  <h1 class="commentC">{{comment.displayName}}</h1>
+                  <div class="textCom">
+                    <h1 class="commentC">{{comment.comment}}</h1>
+                  </div>
+                  <h4 class="commentDate">{{comment.crDate}}</h4>
+                </div>
+                <div *ngIf="comment.commentType === 'ATTACH'" fxLayout="column">
+                  <h1 class="commentC">{{comment.displayName}}</h1>
+                  <h1 class="commentC"><a class="links" href="{{comment.apiImagePath}}" target="_blank">attachment</a></h1>
+                  <h4 class="commentDate">{{comment.crDate}}</h4>
+                </div>
+                
+              </div>
+              
+              
+            </mat-card>
+            
+            
+          </div>
+        </div>
+      </div>
+    

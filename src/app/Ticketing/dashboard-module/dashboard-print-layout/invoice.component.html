@@ -1,0 +1,38 @@
+<section class="print">
+    <!-- <button class="btn btn-primary" (click)="downloadAsPDF()">Export To PDF</button> -->
+<div class="row" id="pdfTable" #pdfTable>
+    <div class="bar">
+      
+        <canvas baseChart height="100"
+                [datasets]="barChart.ChartData"
+                [labels]="barChart.ChartLabels"
+                [options]="barChart.ChartOptions"
+                [legend]="barChart.ChartLegend"
+                [type]="barChart.ChartType" ></canvas>
+                
+                <!-- [colors]="barChart.ChartColors" -->
+      </div>
+    <div class="container">
+     
+      <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col colX">Dept.</div>
+          <div class="col">Opened</div>
+          <div class="col">Assigned</div>
+          <div class="col">Closed</div>
+        </li>
+        
+        <!-- <li *ngFor="let dept of deptResult" class="table-row">
+          <div class="col colX" data-label="Job Id">{{dept.deptName}}</div>
+          <div class="col" data-label="Customer Name"><div class="colHidden">Opened:</div>{{dept.open}}</div>
+          <div class="col" data-label="Amount"><div class="colHidden">Assigned:</div>{{dept.assign}}</div>
+          <div class="col" data-label="Payment Status"><div class="colHidden">Closed:</div>{{dept.closed}}</div>
+        </li> -->
+      </ul>
+    </div>
+    
+  
+      
+  </div>
+  
+</section>

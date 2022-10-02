@@ -1,0 +1,62 @@
+.ticketDets {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 530px;
+    margin-left: 5px;
+    
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .ticketDets::-webkit-scrollbar {
+    width: 3px;
+  }
+  .ticketDets::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+  
+    background-color: rgb(128, 126, 126);
+  }
+  .topDet {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px lightgray;
+  }
+
+  .attach:nth-child(even) {
+    .commentedCard {
+      background-color: hsl(48, 46%, 93%);
+    }
+    .commentedCard .comment_title mat-card-title {
+      // color: #179d84;
+      color: black;
+      font-weight: bold;
+    }
+  }
+
+  .attach:nth-child(odd) {
+    .commentedCard {
+      background-color: white;
+    }
+  
+    .commentedCard .comment_title mat-card-title {
+      // color: #971a30;
+      color: black;
+      font-weight: bold;
+    }
+  }
+
+  .commentedCard {
+    // width: 370px;
+    margin-bottom: 5px;
+  }
+
+  .userComment {
+    width: 100%;
+  }
+  .commentcolumn {
+    width: 100%;
+  }
+  
