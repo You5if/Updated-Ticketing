@@ -1,20 +1,20 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ChangePasswordComponent } from "./components/security/user/change-password/change-password.component";
-import { DashboardComponent } from "./components/dynamic/dashboard/dashboard.component";
+// import { DashboardComponent } from "./components/dynamic/dashboard/dashboard.component";
 import { LoginComponent } from "./components/security/auth/login/login.component";
 import { WelcomeComponent } from "./components/dynamic/welcome/welcome.component";
 import { AuthGuard } from "./components/security/auth/auth-guard";
-import { CountryComponent } from "./components/security/admin/regional/country/country.component";
-import { CityComponent } from "./components/security/admin/regional/city/city.component";
+// import { CountryComponent } from "./components/security/admin/regional/country/country.component";
+// import { CityComponent } from "./components/security/admin/regional/city/city.component";
 import { ReportPageComponent } from "./components/PR/report-page/report-page.component";
-import { NotActivatedComponent } from "./components/dynamic/notactivated/notactivated.component";
+// import { NotActivatedComponent } from "./components/dynamic/notactivated/notactivated.component";
 import { SignUpComponent } from "./components/security/signup/signup.component";
-import { AccountActivatedComponent } from "./components/dynamic/accountactivated/accountactivated.component";
-import { RegistrationExpiredComponent } from "./components/dynamic/registrationexpired/registrationexpired.component";
-import { ChangePasswordAnonComponent } from "./components/dynamic/change-passwordanon/change-passwordanon.component";
-import { SDBatchVehicleEntryComponent } from "./components/AlaadinShipping/sdbatchvehicleentry/sdbatchvehicleentry.component";
-import { SDVehicleDetailComponent } from "./components/AlaadinShipping/sdvehicledetail/sdvehicledetail.component";
+// import { AccountActivatedComponent } from "./components/dynamic/accountactivated/accountactivated.component";
+// import { RegistrationExpiredComponent } from "./components/dynamic/registrationexpired/registrationexpired.component";
+// import { ChangePasswordAnonComponent } from "./components/dynamic/change-passwordanon/change-passwordanon.component";
+// import { SDBatchVehicleEntryComponent } from "./components/AlaadinShipping/sdbatchvehicleentry/sdbatchvehicleentry.component";
+// import { SDVehicleDetailComponent } from "./components/AlaadinShipping/sdvehicledetail/sdvehicledetail.component";
 import { SDShippingLineCompaniesComponent } from "./components/AlaadinShipping/sdshippinglinecompanies/sdshippinglinecompanies.component";
 import { SDDispatchPlanComponent } from "./components/AlaadinShipping/sddispatchplan/sddispatchplan.component";
 import { SDDispatchPlanExpenseComponent } from "./components/AlaadinShipping/sddispatchplanexpense/sddispatchplanexpense.component";
@@ -55,6 +55,9 @@ import { AdminTicketComponent } from "./Ticketing/admin-ticket/ticket.component"
 import { PrintLayoutComponent } from "./Ticketing/dashboard-module/print-layout/print-layout.component";
 import { DashboardPrintlayoutComponent } from "./Ticketing/dashboard-module/dashboard-print-layout/invoice.component";
 import { UrlTicketComponent } from "./url-ticket/url-ticket.component";
+import { CustProfComponent } from "./Ticketing/custprof/custprof.component";
+import { EscalationComponent } from "./Ticketing/escalation/escalation.component";
+import { EscEvalComponent } from "./Ticketing/esceval/esceval.component";
 // import { ChartsModule } from 'ng2-charts';
 
 
@@ -109,6 +112,9 @@ const routes: Routes = [
       { path: "Details", component: DashboardDetailsComponent },
       { path: "Dashboard", component: DashboardModuleComponent},
       { path: "Custom", component: KnownClientComponent },
+      { path: "Customer", component: CustProfComponent },
+      { path: "Escalation", component: EscalationComponent },
+      { path: "EscalationExe", component: EscEvalComponent },
       { path: "TechnicianReport", component: ReportPageComponent },
       { path: ':id', component: NewClientComponent },
       { path: 'TicketDetails/:id', component: UrlTicketComponent },

@@ -296,6 +296,37 @@ export class DashboardModuleComponent implements OnInit {
       }
 
     })
+    }else if (this.admin === '209') {
+      this._ui.loadingStateChanged.next(true);
+    this.service.getDepartmentsDashboard("GetTicketDshByDepartment").subscribe((result) => {
+      this._ui.loadingStateChanged.next(false);
+      this.deptArray = result
+      this.showDashboard = true
+      this.deptArray.map((item)=>{
+        if(this.deptList.includes(item.deptName)){
+          let replaced =this.deptResult.filter((element)=>{
+            if(element.deptName===item.deptName){return element}
+          })
+          console.log('this.result3', JSON.stringify(this.deptResult));
+          this.deptResult[this.deptResult.indexOf(replaced[0])].open += item.open
+          this.deptResult[this.deptResult.indexOf(replaced[0])].assign += item.assign
+          this.deptResult[this.deptResult.indexOf(replaced[0])].closed += item.closed
+          console.log('this.result4', this.deptResult);
+        }else{
+          this.deptResult.push(item)
+          this.deptList.push(item.deptName)
+        }
+      })
+      console.log('this.result2', this.deptResult);
+
+      this.barChart.ChartLabels = this.deptList
+      for (let i = 0; i < this.deptResult.length; i++) {
+        this.barChart.ChartData[0].data.push(this.deptResult[i].open)
+        this.barChart.ChartData[1].data.push(this.deptResult[i].assign)
+        this.barChart.ChartData[2].data.push(this.deptResult[i].closed)
+      }
+
+    })
     }else  {
       this._ui.loadingStateChanged.next(true);
       this.service.getDepartmentsDashboard2(Number(this._auth.getUserId())).subscribe((result) => {

@@ -37,7 +37,7 @@ import { MatTreeModule} from "@angular/material/tree";
 import { MAT_DATE_LOCALE} from "@angular/material/core";
 import {DateAdapter } from "@angular/material/core";
 import {MAT_DATE_FORMATS } from "@angular/material/core";
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { ResizableModule } from 'angular-resizable-element';
@@ -59,7 +59,9 @@ export const MY_FORMATS = {
 @NgModule({
     providers: [
         { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-        { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
+        { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+        { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },
     ],
     imports: [
         MatAutocompleteModule,

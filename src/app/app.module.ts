@@ -1,14 +1,14 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
-import {MatIconModule} from "@angular/material/icon";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
-import {MAT_DIALOG_DATA,MatDialogRef} from "@angular/material/dialog";
+// import {MatIconModule} from "@angular/material/icon";
+// import {MatButtonModule} from "@angular/material/button";
+// import {MatSidenavModule} from "@angular/material/sidenav";
+// import {MatToolbarModule} from "@angular/material/toolbar";
+// import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+// import {MatDatepickerModule} from "@angular/material/datepicker";
+// import {MatNativeDateModule} from "@angular/material/core";
+// import {MAT_DIALOG_DATA,MatDialogRef} from "@angular/material/dialog";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -18,11 +18,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { DatePipe } from "@angular/common";
 import { MaterialModule } from "src/app/material.module";
-import { MenuItemComponent } from "./components/dynamic/menu/menu-item/menu-item.component";
+// import { MenuItemComponent } from "./components/dynamic/menu/menu-item/menu-item.component";
 import { AppGlobals } from "./app.global";
 import { CommonService } from "./components/common/common.service";
-import { MenuBarComponent } from "./components/dynamic/menu/menu-bar/menu-bar.component";
-import { DashboardComponent } from "./components/dynamic/dashboard/dashboard.component";
+// import { MenuBarComponent } from "./components/dynamic/menu/menu-bar/menu-bar.component";
+// import { DashboardComponent } from "./components/dynamic/dashboard/dashboard.component";
 import { ChartModule } from "angular2-chartjs";
 import { ChangePasswordComponent } from "./components/security/user/change-password/change-password.component";
 import { UIService } from "./components/shared/uiservices/UI.service";
@@ -33,15 +33,15 @@ import { ErrorApiBoxComponent } from "./components/messagebox/error-api-box/erro
 import { WarningBoxComponent } from "./components/messagebox/warning-box/warning-box.component";
 import { PleaseWaitComponent } from "./components/shared/uiservices/please-wait/please-wait.component";
 import { LoginComponent } from "./components/security/auth/login/login.component";
-import { LandingMenuComponent } from "./components/dynamic/menu/landing-menu/landing-menu.component";
+// import { LandingMenuComponent } from "./components/dynamic/menu/landing-menu/landing-menu.component";
 import { WelcomeComponent } from "./components/dynamic/welcome/welcome.component";
 import { TokenInterceptor } from "./token-interceptor";
 import { AuthGuard } from "./components/security/auth/auth-guard";
 import { AuthService } from "./components/security/auth/auth.service";
-import { CityComponent } from "./components/security/admin/regional/city/city.component";
-import { RegionalService } from "./components/security/admin/regional/regional.service";
-import { CountryComponent } from "./components/security/admin/regional/country/country.component";
-import { CountryEntryComponent } from "./components/security/admin/regional/country/country-entry/country-entry.component";
+// import { CityComponent } from "./components/security/admin/regional/city/city.component";
+// import { RegionalService } from "./components/security/admin/regional/regional.service";
+// import { CountryComponent } from "./components/security/admin/regional/country/country.component";
+// import { CountryEntryComponent } from "./components/security/admin/regional/country/country-entry/country-entry.component";
 import { PageEventsService } from "./components/common/pageevents/page-events.service";
 import { SelectService } from "./components/common/select.service";
 import { PageSortComponent } from "./components/common/pageevents/page-sort/page-sort.component";
@@ -51,14 +51,14 @@ import {
   ReportPageComponent,
   SafePipe
 } from "./components/PR/report-page/report-page.component";
-import { MenuSetupComponent } from "./components/security/admin/menu-setup/menu-setup.component";
-import { StateComponent } from "./components/security/admin/regional/state/state.component";
-import { NotActivatedComponent } from "src/app/components/dynamic/notactivated/notactivated.component";
+// import { MenuSetupComponent } from "./components/security/admin/menu-setup/menu-setup.component";
+// import { StateComponent } from "./components/security/admin/regional/state/state.component";
+// import { NotActivatedComponent } from "src/app/components/dynamic/notactivated/notactivated.component";
 import { SignUpComponent } from "src/app/components/security/signup/signup.component";
 import { SignUpService } from "./components/security/signup/signup.service";
-import { AccountActivatedComponent } from "./components/dynamic/accountactivated/accountactivated.component";
-import { RegistrationExpiredComponent } from "src/app/components/dynamic/registrationexpired/registrationexpired.component";
-import { ChangePasswordAnonComponent } from "./components/dynamic/change-passwordanon/change-passwordanon.component";
+// import { AccountActivatedComponent } from "./components/dynamic/accountactivated/accountactivated.component";
+// import { RegistrationExpiredComponent } from "src/app/components/dynamic/registrationexpired/registrationexpired.component";
+// import { ChangePasswordAnonComponent } from "./components/dynamic/change-passwordanon/change-passwordanon.component";
 import { AttendanceuploadComponent } from "./components/StatesDispatch/upload/upload.component";
 import { NgxImageCompressService } from "ngx-image-compress";
 import { Ng2ImgMaxModule } from "ng2-img-max";
@@ -229,6 +229,14 @@ import { AdminDetailsEntryComponent } from "./Ticketing/admin-ticket/details-ent
 import { PrintLayoutComponent } from "./Ticketing/dashboard-module/print-layout/print-layout.component";
 import { DashboardPrintlayoutComponent } from "./Ticketing/dashboard-module/dashboard-print-layout/invoice.component";
 import { UrlTicketComponent } from './url-ticket/url-ticket.component';
+import { UploadFilesPolicyComponent } from "./Ticketing/upload-policy/upload-files/upload-files.component";
+import { UploadPolicyComponent } from "./Ticketing/upload-policy/upload.component";
+import { EscalationComponent } from "./Ticketing/escalation/escalation.component";
+import { EscEvalComponent } from "./Ticketing/esceval/esceval.component";
+import { CustProfComponent } from "./Ticketing/custprof/custprof.component";
+import { CustProfEntryComponent } from "./Ticketing/custprof/custprof-entry/custprof-entry.component";
+import { EscalationEntryComponent } from "./Ticketing/escalation/escalation-entry/escalation-entry.component";
+import { EscEvalEntryComponent } from "./Ticketing/esceval/esceval-entry/esceval-entry.component";
 
 
 
@@ -282,31 +290,31 @@ export const jwtConfig = {
   declarations: [
     AppComponent,
     AdminDetailsEntryComponent,
-    NotActivatedComponent,
-    AccountActivatedComponent,
-    RegistrationExpiredComponent,
+    // NotActivatedComponent,
+    // AccountActivatedComponent,
+    // RegistrationExpiredComponent,
     ChangePasswordComponent,
-    ChangePasswordAnonComponent,
-    DashboardComponent,
+    // ChangePasswordAnonComponent,
+    // DashboardComponent,
     ErrorBoxComponent,
     ErrorApiBoxComponent,
     WarningBoxComponent,
     PleaseWaitComponent,
-    MenuBarComponent,
-    MenuItemComponent,
+    // MenuBarComponent,
+    // MenuItemComponent,
     LoginComponent,
-    LandingMenuComponent,
+    // LandingMenuComponent,
     WelcomeComponent,
-    CountryComponent,
-    CountryEntryComponent,
-    CityComponent,
+    // CountryComponent,
+    // CountryEntryComponent,
+    // CityComponent,
     PageSortComponent,
     UploadComponent,
     UploadFilesComponent,
     ReportPageComponent,
-    MenuSetupComponent,
+    // MenuSetupComponent,
     SafePipe,
-    StateComponent,
+    // StateComponent,
     SignUpComponent,
     UploadComponent,
     AttendanceuploadComponent,
@@ -456,11 +464,19 @@ export const jwtConfig = {
     MyTestAutoComponent,
     UploadProfileComponent,
     UploadFiles2Component,
+    UploadPolicyComponent,
+    UploadFilesPolicyComponent,
     DashboardModuleComponent,
     DashboardDetailsComponent,
     DashboardPrintlayoutComponent,
     PrintLayoutComponent,
     UrlTicketComponent,
+    CustProfComponent,
+    EscalationComponent,
+    EscEvalComponent,
+    CustProfEntryComponent,
+    EscalationEntryComponent,
+    EscEvalEntryComponent,
     
 
 
@@ -473,11 +489,11 @@ export const jwtConfig = {
     NgChartsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
+    // MatIconModule,
+    // MatButtonModule,
+    // MatSidenavModule,
     Ng2ImgMaxModule,
-    MatToolbarModule,
+    // MatToolbarModule,
     AppRoutingModule,
     ChartModule,
     FlexLayoutModule,
@@ -485,13 +501,13 @@ export const jwtConfig = {
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
+    // MatDatepickerModule,
+    // MatNativeDateModule,
     JwtModule.forRoot({
       config: jwtConfig
     }),
     MaterialModule,
-    MatBottomSheetModule,
+    // MatBottomSheetModule,
     
   ],
   providers: [
@@ -514,15 +530,15 @@ export const jwtConfig = {
     } ,
     MyTestAutoComponent,
     AlertifyService,
-    { provide: MatDialogRef, useValue: {} },
-{ provide: MAT_DIALOG_DATA, useValue: [] },
+//     { provide: MatDialogRef, useValue: {} },
+// { provide: MAT_DIALOG_DATA, useValue: [] },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AppGlobals,
     DApiSerivce,
     AuthGuard,
     AuthService,
     CommonService,
-    RegionalService,
+    // RegionalService,
     DatePipe,
     MessageBoxService,
     FilterService,
@@ -547,7 +563,7 @@ export const jwtConfig = {
     ErrorApiBoxComponent,
     WarningBoxComponent,
     PleaseWaitComponent,
-    CountryEntryComponent,
+    // CountryEntryComponent,
     PageSortComponent,
     SDVehicleDetailEntryComponent,
     SDShippingLineCompaniesEntryComponent,
@@ -570,7 +586,7 @@ export const jwtConfig = {
     UploadReadComponent,
     SDCarMakeEntryComponent,
     SDCarModelEntryComponent,
-    SDBatchVehicleEntryComponent,
+    // SDBatchVehicleEntryComponent,
     // SDUserEntryComponent,
     SDDispatchPlanPaymentEntryComponent,
     SDCompanyEntryComponent,
@@ -604,6 +620,9 @@ export const jwtConfig = {
     DetailsEntryComponent,
     AppNotificationEntryComponent,
     AdminDetailsEntryComponent,
+    CustProfEntryComponent,
+    EscalationEntryComponent,
+    EscEvalEntryComponent,
     
   ]
 })

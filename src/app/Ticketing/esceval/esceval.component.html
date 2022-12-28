@@ -9,11 +9,6 @@
     <section class="sec" >
 
       <div class="add_btnD"   (click)="onAdd()" ><mat-icon >add</mat-icon></div>
-      <app-policy-upload [myFiles]="lFiles" (onUploadFinished)="uploadFinished($event)"
-                  
-                  >
-      </app-policy-upload>
-      <div class="add_btnDown"   ><i class="fa fa-download"></i></div>
       <!-- <button mat-button color="primary" (click)="openEntry()">Filter</button>
       <button mat-button color="primary" (click)="onSort()">Sort</button>
       <button mat-button color="primary" (click)="openEntry()" [disabled]="!screenRights.printFlag">Print</button>
@@ -60,12 +55,10 @@
       </mat-cell>
 
   </ng-container>
-    <ng-container matColumnDef="policyCode">      <mat-header-cell class="centH" *matHeaderCellDef>{{policyCode}}</mat-header-cell>     <mat-cell mat-cell class="cent" *matCellDef="let row">{{row.policyCode}}</mat-cell>
+    <ng-container matColumnDef="escEvalId">      <mat-header-cell class="centH" *matHeaderCellDef>{{escEvalId}}</mat-header-cell>     <mat-cell mat-cell class="cent" *matCellDef="let row">{{row.escEvalId}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="issuedOn">      <mat-header-cell class="centH" *matHeaderCellDef>{{issuedOn}}</mat-header-cell>     <mat-cell mat-cell class="cent" *matCellDef="let row">{{row.issuedOn | date }}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="expiryDate">      <mat-header-cell class="centH" *matHeaderCellDef>{{expiryDate}}</mat-header-cell>     <mat-cell mat-cell class="cent" *matCellDef="let row">{{row.expiryDate | date}}</mat-cell>
-    </ng-container>
+   
+
    
 
 
@@ -73,7 +66,7 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell class="cent" *matHeaderCellDef>{{edit}}</mat-header-cell>
       <mat-cell class="cent" mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary" (click)="onEdit(row.policyId)" [disabled]="!screenRights.editFlag">
+        <button mat-icon-button color="primary" (click)="onEdit(row.escEvalId)" [disabled]="!screenRights.editFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true">edit</mat-icon>
         </button>
       </mat-cell>
@@ -83,7 +76,7 @@
     <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
       <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary"
-          (click)="onDelete(row.policyId)" [disabled]="!screenRights.deleteFlag">
+          (click)="onDelete(row.escEvalId)" [disabled]="!screenRights.deleteFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true" color="warn">delete</mat-icon>
         </button>
       </mat-cell>
@@ -92,7 +85,7 @@
     <!-- view Column -->
     <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
-      <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.policyId)"
+      <mat-cell mat-cell *matCellDef="let row"><button mat-icon-button color="primary" (click)="onView(row.escEvalId)"
           [disabled]="!screenRights.viewFlag">
           <mat-icon small class="mat-icon material-icons" role="img" aria-hidden="true" color="primary">visibility
           </mat-icon>
@@ -102,7 +95,7 @@
 
     <mat-header-row  class="headerRow" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onEdit(row.policyId)" class="rowR" [class.active]="clickedRows.has(row)" ></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onEdit(row.escEvalId)" class="rowR" [class.active]="clickedRows.has(row)" ></mat-row>
 
   </mat-table>
 
@@ -112,26 +105,17 @@
     <mat-card fxLayout class="card">
       <div >
         <div fxLayoutGap="5px" class="index_row">
-          <h3>{{policyCode}}</h3>
+          <h3>{{escEvalId}}</h3>
           <h3>:</h3>
-          <h3>{{ index.policyCode }}</h3>
+          <h3>{{ index.escEvalId }}</h3>
         </div>
-        <div fxLayoutGap="5px" class="index_row">
-          <h3>{{issuedOn}}</h3>
-          <h3>:</h3>
-          <h3>{{ index.issuedOn | date }}</h3>
-        </div>
-        <div fxLayoutGap="5px" class="index_row">
-          <h3>{{expiryDate}}</h3>
-          <h3>:</h3>
-          <h3>{{ index.expiryDate | date }}</h3>
-        </div>
+       
         
       </div>
       <div>
         <button class="Btn" mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
 <mat-menu #menu="matMenu">
-  <button (click)="onEdit(index.policyId)" class="Btn" mat-menu-item>{{edit}}</button>
+  <button (click)="onEdit(index.escEvalId)" class="Btn" mat-menu-item>{{edit}}</button>
   
 </mat-menu>
       </div>

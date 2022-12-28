@@ -86,8 +86,8 @@
      </div>
       <mat-divider *ngIf="role === '2'"></mat-divider>
    <div *ngIf="role === '2'">
-    <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Categotries')" routerLink="ProblemCat" routerLinkActive="is-active"><a><i class="fa fa-cubes"></i>{{catagotries}}</a></li>
-    <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Categotries')" routerLink="ProblemCat" routerLinkActive="is-active"><a><i class="fa fa-cubes"></i><div class="textIcons">{{catagotries}}</div></a></li>
+    <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Categories')" routerLink="ProblemCat" routerLinkActive="is-active"><a><i class="fa fa-cubes"></i>{{catagotries}}</a></li>
+    <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Categories')" routerLink="ProblemCat" routerLinkActive="is-active"><a><i class="fa fa-cubes"></i><div class="textIcons">{{catagotries}}</div></a></li>
    </div>
     <mat-divider *ngIf="role === '2'"></mat-divider>
     <div *ngIf="role === '2'">
@@ -117,8 +117,18 @@
       <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Tickets')" routerLink="Ticket" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i>{{tickets}}</a></li>
     <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Tickets')" routerLink="Ticket" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i><div class="textIcons">{{tickets}}</div></a></li>
     </div>
-    <mat-divider *ngIf="admin === '203' || admin === '26' || admin === '206' || admin === '148' || admin === '147' "></mat-divider>
-    <div  *ngIf="admin === '203' || admin === '26' || admin === '206' || admin === '148' || admin === '147' ">
+    <mat-divider *ngIf="role === '2'"></mat-divider>
+    <div  *ngIf="role === '2' ">
+      <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Escalation')" routerLink="Escalation" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i>{{escalation}}</a></li>
+    <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Escalation')" routerLink="Escalation" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i><div class="textIcons">{{escalation}}</div></a></li>
+    </div>
+    <mat-divider *ngIf="role === '2' "></mat-divider>
+    <div  *ngIf="role === '2'  ">
+      <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Escalation execution')" routerLink="EscalationExe" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i>{{escalationExe}}</a></li>
+    <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Escalation execution')" routerLink="EscalationExe" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i><div class="textIcons">{{escalationExe}}</div></a></li>
+    </div>
+    <mat-divider *ngIf="admin === '203' || admin === '26' || admin === '206' || admin === '148' || admin === '147' || admin === '209' "></mat-divider>
+    <div  *ngIf="admin === '203' || admin === '26' || admin === '206' || admin === '148' || admin === '147' || admin === '209' ">
       <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Admin tickets')" routerLink="AdminTicket" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i>{{adminTickets}}</a></li>
     <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Admin tickets')" routerLink="AdminTicket" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i><div class="textIcons">{{adminTickets}}</div></a></li>
     </div>
@@ -148,6 +158,18 @@
       <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Dashboard')" routerLink="Dashboard" routerLinkActive="is-active"><a><i class="fa fa-chart-line"></i>{{dashboard}}</a></li>
     <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Dashboard')" routerLink="Dashboard" routerLinkActive="is-active"><a><i class="fa fa-chart-line"></i><div class="textIcons">{{dashboard}}</div></a></li>
     </div>
+
+    <mat-divider ></mat-divider>
+        <div >
+          <div  *ngIf="opened" class="main_title">
+            <span class="fon">{{crm}}</span>
+          </div>
+         </div>
+          <mat-divider ></mat-divider>
+          <div >
+            <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Customer')" routerLink="Customer"  ><a><i class="fa fa-file"></i>{{customer}}</a></li>
+            <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Customer')"  routerLink="Customer"><a><i class="fa fa-file"></i><div class="textIcons">{{customer}}</div></a></li>
+           </div>
         
       </ul>
     </div>

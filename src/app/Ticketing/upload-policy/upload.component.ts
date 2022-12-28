@@ -10,7 +10,7 @@ import { HttpEventType, HttpClient } from "@angular/common/http";
 import { AppGlobals } from "src/app/app.global";
 import { FileListModel } from "./upload-file.model";
 import { NgxImageCompressService } from "ngx-image-compress";
-import { UploadFiles2Component } from "./upload-files/upload-files.component";
+import { UploadFilesPolicyComponent } from "./upload-files/upload-files.component";
 import { Ng2ImgMaxService } from "ng2-img-max";
 import { UIService } from "src/app/components/shared/uiservices/UI.service";
 import { MessageBoxService } from "src/app/components/messagebox/message-box.service";
@@ -19,11 +19,11 @@ import { UploadService } from "./upload.service";
 
 
 @Component({
-  selector: "app-profile-upload",
+  selector: "app-policy-upload",
   templateUrl: "./upload.component.html",
   styleUrls: ["./upload.component.scss"]
 })
-export class UploadProfileComponent implements OnInit {
+export class UploadPolicyComponent implements OnInit {
   // step.2
   imageData!: FileListModel;
   @Input() myFiles!: FileListModel[];
@@ -39,7 +39,7 @@ export class UploadProfileComponent implements OnInit {
   @Output() public onUploadFinished = new EventEmitter();
   // tslint:disable-next-line:no-output-on-prefix
   @Output() public onDeleteFile = new EventEmitter();
-  @ViewChild(UploadFiles2Component) childFileListComponent!: UploadFiles2Component;
+  @ViewChild(UploadFilesPolicyComponent) childFileListComponent!: UploadFilesPolicyComponent;
 
   constructor(
     private http: HttpClient,
@@ -104,7 +104,7 @@ export class UploadProfileComponent implements OnInit {
         const formData = new FormData();
         formData.append("file", fileToUpload, fileToUpload.name);
         this.http
-          .post(this._globals.baseAPIUrl + "UnCustomer/uploadfile", formData, {
+          .post(this._globals.baseAPIUrl + "Policy/uploadfile", formData, {
             reportProgress: true,
             observe: "events"
           })

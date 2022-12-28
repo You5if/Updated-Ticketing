@@ -2,7 +2,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { FilterService } from './filter.service';
-import { SDVehicleDetailComponent } from '../AlaadinShipping/sdvehicledetail/sdvehicledetail.component';
+// import { SDVehicleDetailComponent } from '../AlaadinShipping/sdvehicledetail/sdvehicledetail.component';
 import { Router } from '@angular/router';
 import { AuthService } from '../security/auth/auth.service';
 // import { AuthService2 } from '../security/auth/myauth.service';
@@ -10,6 +10,7 @@ import { AuthService } from '../security/auth/auth.service';
 export interface Color {
   name: string;
 }
+
 
 @Component({
   selector: 'filter',
@@ -20,7 +21,7 @@ export class FilterComponent implements OnInit {
   route!: Router;
   role:string|null = '';
 
-  @ViewChild(SDVehicleDetailComponent) childFileListComponent!: SDVehicleDetailComponent;
+  // @ViewChild(SDVehicleDetailComponent) childFileListComponent!: SDVehicleDetailComponent;
 
   constructor(
     private filter: FilterService,
@@ -33,7 +34,7 @@ export class FilterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.filter.parentVehicle.refreshMe();
+    // this.filter.parentVehicle.refreshMe();
   }
 
   onClearFilters() {
@@ -89,7 +90,7 @@ export class FilterComponent implements OnInit {
       paymentAmountFrom: "''",
       paymentAmountTo: "''",
     }
-    this.filter.parentVehicle.refreshMe();
+    // this.filter.parentVehicle.refreshMe();
   }
 
   onClearFilters2() {

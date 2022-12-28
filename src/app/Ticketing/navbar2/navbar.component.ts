@@ -87,6 +87,10 @@ export class Navbar2Component implements OnInit {
   newNotification: any;
   reports: string;
   report: string;
+  crm: string;
+  customer: string;
+  escalation: string;
+  escalationExe: string;
   constructor(
     private _auth: AuthService,
     private titleService: Title,
@@ -138,6 +142,10 @@ export class Navbar2Component implements OnInit {
       this.userManagement = "User management"
       this.subSystem = "Sub system"
       this.users = "Users"
+      this.crm = "CRM"
+      this.customer = "Customer"
+      this.escalation = "Escalation"
+      this.escalationExe = "Execution"
       this.customerManagement = "Customer management"
       this.customers = "Customers"
       this.policies = "Policies"
@@ -278,6 +286,10 @@ export class Navbar2Component implements OnInit {
       this.callCenter = "Call center"
       this.userManagement = "User management"
       this.users = "Users"
+      this.crm = "CRM"
+      this.customer = "Customer"
+      this.escalation = "Escalation"
+      this.escalationExe = "Execution"
       this.customerManagement = "Customer management"
       this.subSystem = "Sub system"
       this.customers = "Customers"
@@ -308,6 +320,10 @@ export class Navbar2Component implements OnInit {
       this.Agent = "العميل"
       this.userManagement = "ادارة المستخدمين"
       this.users = "المستخدمين"
+      this.crm = "ادارة العملاء"
+      this.customer = "العميل"
+      this.escalation = "التصعيد"
+      this.escalationExe = "التنفيذ"
       this.subSystem = "نظام بديل"
       this.customerManagement = "ادارة العملاء"
       this.customers = "العملاء"
@@ -339,6 +355,10 @@ export class Navbar2Component implements OnInit {
       this.callCenter = "Call center"
       this.userManagement = "User management"
       this.users = "Users"
+      this.crm = "CRM"
+      this.customer = "Customer"
+      this.escalation = "Escalation"
+      this.escalationExe = "Execution"
       this.customerManagement = "Customer management"
       this.customers = "Customers"
       this.Agent = "Agents"
