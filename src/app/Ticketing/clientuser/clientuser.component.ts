@@ -42,6 +42,12 @@ export class ClientUserComponent implements OnInit {
     currentPageIndex: number;
     clickedRows = new Set<ClientUserModel>();
     selection = new SelectionModel<ClientUserModel>(true, []);delete: string;
+  workShimmerBtn: boolean;
+  workShimmerTable: boolean;
+  workShimmerCard: boolean;
+  workShimmerPaginator: boolean;
+  workShimmerHeader:boolean;
+  workShimmerCardBtn: boolean;
 ;
     menuId: number;
     displayName: string;
@@ -57,10 +63,13 @@ export class ClientUserComponent implements OnInit {
   cancel: string;
   direction: Direction;
   indexes: any;
+  workShimmer:boolean;
   deleteModel: DeleteModel;
   opC: boolean = true;
+  headerToShow: any[] = []
 
-    totalRecords: number;
+    
+    totalRecords!: number;
     pageSizeOptions: number[] = [5, 10, 25, 100];
 
     screenRights: RightModel = {
@@ -94,11 +103,25 @@ export class ClientUserComponent implements OnInit {
       }
 
   ngOnInit() {
+    
       this.refreshMe();
   }
 
   refreshMe() {
-    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+    
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
+    if (localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
       this.header = "Users"
       this.displayName = "User"
@@ -115,6 +138,7 @@ export class ClientUserComponent implements OnInit {
       this.edit = "Edit"
       this.submit = "Submit"
       this.cancel = "Cancel"
+      this.headerToShow = [this.displayName, this.username,this.appRole, this.password, this.changePassword]
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       this.direction = "rtl"
       this.header = "المستخدمين"
@@ -132,10 +156,23 @@ export class ClientUserComponent implements OnInit {
       this.edit = "تعديل"
       this.submit = "ارسال"
       this.cancel = "الغاء"
+      this.headerToShow = [this.displayName, this.username,this.appRole, this.password, this.changePassword]
     }
     this._cf.getPageData('ClientUser', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
           this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
           this.dataSource = new MatTableDataSource(result);
@@ -175,22 +212,28 @@ export class ClientUserComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  paginatoryOperation(event: PageEvent) {
+   paginatoryOperation(event: PageEvent) {
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
     try {
       this._cf.getPageDataOnPaginatorOperation(event, this.pTableName, this.pScreenId, this._auth.getUserId(),
         this.pTableId, this.totalRecords).subscribe(
           (result: any) => {
-            this._ui.loadingStateChanged.next(false);
+            this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+            // this._ui.loadingStateChanged.next(false);
             this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;
             this.dataSource = result;
           }, error => {
-            this._ui.loadingStateChanged.next(false);
+            // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
             return false;
           });
     } catch (error:any) {
-      this._ui.loadingStateChanged.next(false);
+      // this._ui.loadingStateChanged.next(false);
       this._msg.showAPIError(error);
       return false;
     }

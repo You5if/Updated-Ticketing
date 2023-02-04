@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.titleService.setTitle("United Insurance - Login");
+    this.titleService.setTitle("Ticketing|Login");
     // this.googleImagePath = this._globals.baseAPIFileUrl+'/resources/images/btn_google_signin_light_normal_web.png';
     this.valUserObject = {
       username: '',

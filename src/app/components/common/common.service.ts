@@ -372,7 +372,7 @@ export class CommonService {
     pTableId: number,
     totalRecords: number
   ) {
-    this._ui.loadingStateChanged.next(true);
+    // this._ui.loadingStateChanged.next(true);
 
     const currentPage = event.pageIndex + 1;
     let isLastPage: boolean;

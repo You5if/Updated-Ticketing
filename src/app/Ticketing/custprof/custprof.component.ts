@@ -52,7 +52,14 @@ export class CustProfComponent implements OnInit {
   indexes: any;
   custProfId:string;
 
-    totalRecords: number;
+    workShimmerBtn: boolean;
+  workShimmerTable: boolean;
+  workShimmerCard: boolean;
+  workShimmerPaginator: boolean;
+  workShimmerHeader:boolean;
+  workShimmerCardBtn: boolean;
+  headerToShow: any[] = []
+    totalRecords!: number;
     pageSizeOptions: number[] = [5, 10, 25, 100];
 
     screenRights: RightModel = {
@@ -90,7 +97,13 @@ export class CustProfComponent implements OnInit {
   }
 
   refreshMe() {
-    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
+    if (localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
       this.header = "Customer"
       this.custProfId = "custProfId"
@@ -102,6 +115,7 @@ export class CustProfComponent implements OnInit {
       this.edit = "Edit"
       this.submit = "Submit"
       this.cancel = "Cancel"
+      this.headerToShow = ['Select', this.custProfId]
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       this.direction = "rtl"
       this.header = "العملاء"
@@ -114,10 +128,17 @@ export class CustProfComponent implements OnInit {
       this.edit = "تعديل"
       this.submit = "ارسال"
       this.cancel = "الغاء"
+      this.headerToShow = ['Select', this.custProfId]
     }
     this._cf.getPageData('CustProf', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
           this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
           this.dataSource = new MatTableDataSource(result);
@@ -144,22 +165,28 @@ export class CustProfComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  paginatoryOperation(event: PageEvent) {
+   paginatoryOperation(event: PageEvent) {
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
     try {
       this._cf.getPageDataOnPaginatorOperation(event, this.pTableName, this.pScreenId, this._auth.getUserId(),
         this.pTableId, this.totalRecords).subscribe(
           (result: any) => {
-            this._ui.loadingStateChanged.next(false);
+            this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+            // this._ui.loadingStateChanged.next(false);
             this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;
             this.dataSource = result;
           }, error => {
-            this._ui.loadingStateChanged.next(false);
+            // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
             return false;
           });
     } catch (error:any) {
-      this._ui.loadingStateChanged.next(false);
+      // this._ui.loadingStateChanged.next(false);
       this._msg.showAPIError(error);
       return false;
     }

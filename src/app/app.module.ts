@@ -237,6 +237,9 @@ import { CustProfComponent } from "./Ticketing/custprof/custprof.component";
 import { CustProfEntryComponent } from "./Ticketing/custprof/custprof-entry/custprof-entry.component";
 import { EscalationEntryComponent } from "./Ticketing/escalation/escalation-entry/escalation-entry.component";
 import { EscEvalEntryComponent } from "./Ticketing/esceval/esceval-entry/esceval-entry.component";
+import { SystemNavigationComponent } from "./Ticketing/system-navigation/system-navigation.component";
+import { CustomMatExpansionToggleDirective } from "./Ticketing/system-navigation/expansion-panel";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 
 
@@ -477,6 +480,8 @@ export const jwtConfig = {
     CustProfEntryComponent,
     EscalationEntryComponent,
     EscEvalEntryComponent,
+    SystemNavigationComponent,
+    CustomMatExpansionToggleDirective,
     
 
 
@@ -485,6 +490,7 @@ export const jwtConfig = {
     
   ],
   imports: [
+    NgxSkeletonLoaderModule.forRoot({ animation: 'pulse', loadingText: 'This item is actually loading...' }),
     SocialLoginModule.initialize(config),
     NgChartsModule,
     BrowserModule,
@@ -623,6 +629,8 @@ export const jwtConfig = {
     CustProfEntryComponent,
     EscalationEntryComponent,
     EscEvalEntryComponent,
+    SystemNavigationComponent,
+    CustomMatExpansionToggleDirective,
     
   ]
 })

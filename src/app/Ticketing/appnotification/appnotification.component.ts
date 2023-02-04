@@ -54,7 +54,13 @@ export class AppNotificationComponent implements OnInit {
 
   pageData :any
 
-
+  workShimmerBtn: boolean;
+  workShimmerTable: boolean;
+  workShimmerCard: boolean;
+  workShimmerPaginator: boolean;
+  workShimmerHeader:boolean;
+  workShimmerCardBtn: boolean;
+  headerToShow: any[] = []
     totalRecords: number;
     pageSizeOptions: number[] = [100];
 
@@ -103,7 +109,13 @@ export class AppNotificationComponent implements OnInit {
   }
 
   refreshMe() {
-    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
+    if (localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
       this.header = "Notification"
       this.notTime = "Time"
@@ -117,6 +129,7 @@ export class AppNotificationComponent implements OnInit {
       this.edit = "Edit"
       this.submit = "Submit"
       this.cancel = "Cancel"
+      this.headerToShow = [this.notTime, this.notTitle,this.notMessage]
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       this.direction = "rtl"
       this.header = "الاشعارات"
@@ -131,6 +144,7 @@ export class AppNotificationComponent implements OnInit {
       this.edit = "تعديل"
       this.submit = "ارسال"
       this.cancel = "الغاء"
+      this.headerToShow = [this.notTime, this.notTitle,this.notMessage]
     }
     // this._ui.loadingStateChanged.next(true);
     // this._cf.newGetPageData(this.pTableName, this.pageData).subscribe((result) => {
@@ -144,6 +158,12 @@ export class AppNotificationComponent implements OnInit {
     this._cf.getPageData('AppNotification', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
           this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
           this.dataSource = new MatTableDataSource(result);
@@ -173,21 +193,27 @@ export class AppNotificationComponent implements OnInit {
   }
 
   paginatoryOperation(event: PageEvent) {
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
     try {
       this._cf.getPageDataOnPaginatorOperation(event, this.pTableName, this.pScreenId, this._auth.getUserId(),
         this.pTableId, this.totalRecords).subscribe(
           (result: any) => {
-            this._ui.loadingStateChanged.next(false);
+            this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+            // this._ui.loadingStateChanged.next(false);
             this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = 100;
             this.dataSource = result;
           }, error => {
-            this._ui.loadingStateChanged.next(false);
+            // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
             return false;
           });
     } catch (error:any) {
-      this._ui.loadingStateChanged.next(false);
+      // this._ui.loadingStateChanged.next(false);
       this._msg.showAPIError(error);
       return false;
     }

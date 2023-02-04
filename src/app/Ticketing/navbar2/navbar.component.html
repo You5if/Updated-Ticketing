@@ -129,7 +129,7 @@
     </div>
     <mat-divider *ngIf="admin === '203' || admin === '26' || admin === '206' || admin === '148' || admin === '147' || admin === '209' "></mat-divider>
     <div  *ngIf="admin === '203' || admin === '26' || admin === '206' || admin === '148' || admin === '147' || admin === '209' ">
-      <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Admin tickets')" routerLink="AdminTicket" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i>{{adminTickets}}</a></li>
+      <li *ngIf="opened" class="side_list_item" (click)="onChangeSite('Admin tickets')" routerLink="adminTickets" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i>{{adminTickets}}</a></li>
     <li *ngIf="!opened" class="side_list_item_slim" (click)="onChangeSite('Admin tickets')" routerLink="AdminTicket" routerLinkActive="is-active"><a><i class="fa fa-ticket"></i><div class="textIcons">{{adminTickets}}</div></a></li>
     </div>
     
@@ -207,9 +207,7 @@
                 <div *ngIf="!hideNotification" class="notDot"></div>
               </i>
             </button>
-            <!-- <button (click)="onNotification()"  class="toggle_btn3"  [matMenuTriggerFor]="menuN"  mat-icon-button  aria-label="Example icon-button with heart icon">
-              <i matBadge="&#8288;" matBadgeSize="small" matBadgeColor="warn" [matBadgeHidden]="hideNotification"  class="fas fa-bell"></i>
-            </button> -->
+          
             <mat-menu #menuN="matMenu" xPosition="after">
               <div class="notList" >
                 <div *ngFor="let not of newNotification">

@@ -55,7 +55,14 @@ export class ProblemCatComponent implements OnInit {
   direction: Direction;
   indexes: any
 
-    totalRecords: number;
+    workShimmerBtn: boolean;
+  workShimmerTable: boolean;
+  workShimmerCard: boolean;
+  workShimmerPaginator: boolean;
+  workShimmerHeader:boolean;
+  workShimmerCardBtn: boolean;
+  headerToShow: any[] = []
+    totalRecords!: number;
     pageSizeOptions: number[] = [5, 10, 25, 100];
 
     screenRights: RightModel = {
@@ -93,7 +100,13 @@ export class ProblemCatComponent implements OnInit {
   }
 
   refreshMe() {
-    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
+    if (localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
       this.header = "Categories"
       this.deptName = "Department"
@@ -108,6 +121,7 @@ export class ProblemCatComponent implements OnInit {
       this.edit = "Edit"
       this.submit = "Submit"
       this.cancel = "Cancel"
+      this.headerToShow = [this.deptName, this.problem, this.priorityName, this.estimatedTime]
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       this.direction = "rtl"
       this.header = "التصنيفات"
@@ -123,10 +137,17 @@ export class ProblemCatComponent implements OnInit {
       this.edit = "تعديل"
       this.submit = "ارسال"
       this.cancel = "الغاء"
+      this.headerToShow = [this.deptName, this.problem, this.priorityName, this.estimatedTime]
     }
     this._cf.getPageData('ProblemCat', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
           this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
           this.dataSource = new MatTableDataSource(result);
@@ -154,22 +175,28 @@ export class ProblemCatComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  paginatoryOperation(event: PageEvent) {
+   paginatoryOperation(event: PageEvent) {
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
     try {
       this._cf.getPageDataOnPaginatorOperation(event, this.pTableName, this.pScreenId, this._auth.getUserId(),
         this.pTableId, this.totalRecords).subscribe(
           (result: any) => {
-            this._ui.loadingStateChanged.next(false);
+            this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+            // this._ui.loadingStateChanged.next(false);
             this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;
             this.dataSource = result;
           }, error => {
-            this._ui.loadingStateChanged.next(false);
+            // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
             return false;
           });
     } catch (error:any) {
-      this._ui.loadingStateChanged.next(false);
+      // this._ui.loadingStateChanged.next(false);
       this._msg.showAPIError(error);
       return false;
     }

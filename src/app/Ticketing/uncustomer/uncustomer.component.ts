@@ -45,7 +45,14 @@ export class UnCustomerComponent implements OnInit {
     lFiles: FileListModel[] = [];
 
     clickedRows = new Set<UnCustomerModel>();
-    selection = new SelectionModel<UnCustomerModel>(true, []);;
+    selection = new SelectionModel<UnCustomerModel>(true, []);workShimmerBtn: boolean;
+workShimmerHeader: boolean;
+workShimmerTable: boolean;
+workShimmerCard: boolean;
+workShimmerCardBtn: boolean;
+workShimmerPaginator: boolean;
+  headerToShow: string[];
+;
 
     model: Send;
     edit: string;
@@ -57,8 +64,11 @@ export class UnCustomerComponent implements OnInit {
   direction: Direction;
   indexes: any
 
-    totalRecords: number;
+    
+    totalRecords!: number;
     pageSizeOptions: number[] = [5, 10, 25, 100];
+    workShimmer:boolean;
+
 
     screenRights: RightModel = {
         amendFlag: true,
@@ -95,8 +105,20 @@ export class UnCustomerComponent implements OnInit {
   }
 
   refreshMe() {
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
     this.lFiles = []
-    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
+    if (localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
       this.header = "Customers"
       this.customerName = "Name"
@@ -110,9 +132,11 @@ export class UnCustomerComponent implements OnInit {
       this.edit = "Edit"
       this.submit = "Submit"
       this.cancel = "Cancel"
+      this.headerToShow = [this.customerName, this.customerCode,this.contact]
+
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       this.direction = "rtl"
-      this.header = "Customers"
+      this.header = "العملاء"
       this.customerName = "الاسم"
       this.customerCode = "الرمز"
       this.contact = "التواصل"
@@ -124,10 +148,24 @@ export class UnCustomerComponent implements OnInit {
       this.edit = "تعديل"
       this.submit = "ارسال"
       this.cancel = "الغاء"
+      this.headerToShow = [this.customerName, this.customerCode,this.contact]
+
     }
     this._cf.getPageData('UnCustomer', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
           this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
           this.dataSource = new MatTableDataSource(result);
@@ -181,22 +219,28 @@ export class UnCustomerComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  paginatoryOperation(event: PageEvent) {
+   paginatoryOperation(event: PageEvent) {
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
     try {
       this._cf.getPageDataOnPaginatorOperation(event, this.pTableName, this.pScreenId, this._auth.getUserId(),
         this.pTableId, this.totalRecords).subscribe(
           (result: any) => {
-            this._ui.loadingStateChanged.next(false);
+            this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+            // this._ui.loadingStateChanged.next(false);
             this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;
             this.dataSource = result;
           }, error => {
-            this._ui.loadingStateChanged.next(false);
+            // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
             return false;
           });
     } catch (error:any) {
-      this._ui.loadingStateChanged.next(false);
+      // this._ui.loadingStateChanged.next(false);
       this._msg.showAPIError(error);
       return false;
     }

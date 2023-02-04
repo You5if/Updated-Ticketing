@@ -41,7 +41,14 @@ export class PolicyComponent implements OnInit {
     menuId: number;
 
     clickedRows = new Set<PolicyModel>();
-    selection = new SelectionModel<PolicyModel>(true, []);;
+    selection = new SelectionModel<PolicyModel>(true, []);workShimmerBtn: boolean;
+workShimmerHeader: boolean;
+workShimmerTable: boolean;
+workShimmerCard: boolean;
+workShimmerCardBtn: boolean;
+workShimmerPaginator: boolean;
+headerToShow: string[];
+;
 
     model: Send;
     edit: string;
@@ -55,9 +62,11 @@ export class PolicyComponent implements OnInit {
   direction: Direction;
   indexes: any;
   lFiles: FileListModel[] = [];
+  workShimmer:boolean;
 
 
-    totalRecords: number;
+    
+    totalRecords!: number;
     pageSizeOptions: number[] = [5, 10, 25, 100];
 
     screenRights: RightModel = {
@@ -95,8 +104,20 @@ export class PolicyComponent implements OnInit {
   }
 
   refreshMe() {
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
     this.lFiles = []
-    if(localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
+    this.workShimmerBtn = true
+    this.workShimmerHeader = true
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
+    this.workShimmerPaginator = true
+    if (localStorage.getItem(this._globals.baseAppName + '_language') == "16001") {
       this.direction = "ltr"
       this.header = "policies"
       this.policyCode = "Code"
@@ -110,9 +131,11 @@ export class PolicyComponent implements OnInit {
       this.edit = "Edit"
       this.submit = "Submit"
       this.cancel = "Cancel"
+      this.headerToShow = [this.policyCode, this.issuedOn,this.expiryDate]
+
     }else if(localStorage.getItem(this._globals.baseAppName + '_language') == "16002") {
       this.direction = "rtl"
-      this.header = "policies"
+      this.header = "البوليصيات"
       this.policyCode = "الرمز"
       this.issuedOn = "افتتح"
       this.expiryDate = "انتهاء"
@@ -124,10 +147,24 @@ export class PolicyComponent implements OnInit {
       this.edit = "تعديل"
       this.submit = "ارسال"
       this.cancel = "الغاء"
+      this.headerToShow = [this.policyCode, this.issuedOn,this.expiryDate]
+
     }
     this._cf.getPageData('Policy', this.pScreenId, this._auth.getUserId(), this.pTableId,
       this.recordsPerPage, this.currentPageIndex, false).subscribe(
         (result) => {
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
+          this.workShimmerBtn = false
+          this.workShimmerHeader = false
+    this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+    this.workShimmerPaginator = false
           this.totalRecords = result[0].totalRecords;
           this.recordsPerPage = this.recordsPerPage;
           this.dataSource = new MatTableDataSource(result);
@@ -179,22 +216,28 @@ export class PolicyComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  paginatoryOperation(event: PageEvent) {
+   paginatoryOperation(event: PageEvent) {
+    this.workShimmerTable = true
+    this.workShimmerCard = true
+    this.workShimmerCardBtn = true
     try {
       this._cf.getPageDataOnPaginatorOperation(event, this.pTableName, this.pScreenId, this._auth.getUserId(),
         this.pTableId, this.totalRecords).subscribe(
           (result: any) => {
-            this._ui.loadingStateChanged.next(false);
+            this.workShimmerTable = false
+    this.workShimmerCard = false
+    this.workShimmerCardBtn = false
+            // this._ui.loadingStateChanged.next(false);
             this.totalRecords = result[0].totalRecords;
             this.recordsPerPage = event.pageSize;
             this.dataSource = result;
           }, error => {
-            this._ui.loadingStateChanged.next(false);
+            // this._ui.loadingStateChanged.next(false);
             this._msg.showAPIError(error);
             return false;
           });
     } catch (error:any) {
-      this._ui.loadingStateChanged.next(false);
+      // this._ui.loadingStateChanged.next(false);
       this._msg.showAPIError(error);
       return false;
     }

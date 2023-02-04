@@ -58,6 +58,7 @@ import { UrlTicketComponent } from "./url-ticket/url-ticket.component";
 import { CustProfComponent } from "./Ticketing/custprof/custprof.component";
 import { EscalationComponent } from "./Ticketing/escalation/escalation.component";
 import { EscEvalComponent } from "./Ticketing/esceval/esceval.component";
+import { SystemNavigationComponent } from "./Ticketing/system-navigation/system-navigation.component";
 // import { ChartsModule } from 'ng2-charts';
 
 
@@ -92,7 +93,7 @@ const routes: Routes = [
       { path: "dynamic", component: DynamicFormComponent },
       
       // { path: "Fadel", component: Navbar2Component },
-      { path: "System", component: Navbar2Component , children: [
+      { path: "System", component: SystemNavigationComponent , children: [
         { path: '', redirectTo: 'Home', pathMatch: 'full' },
         { path: "Home", component: LandingComponent},
       { path: "Users", component: ClientUserComponent },

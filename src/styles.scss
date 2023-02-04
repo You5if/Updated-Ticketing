@@ -76,14 +76,12 @@ body {
   top: 0;
   width: 100%;
 }
-@media print {
-    app-root > app-navigation > * { display: none; }
-    app-root > app-navigation  app-print-layout { display: block; }
-  }
+
 :root {
   --clr-main: #971a30;
   --clr-sec: white;
 }
+
 mat-icon {
   font-size: 1.4em !important;
 }
@@ -93,6 +91,10 @@ body {
 }
 
 // main {background-color: #eee; padding: 1em;}
+
+.checkbox {
+  margin-left: 0px !important;
+}
 
 .header {
   display: flex;
@@ -108,65 +110,31 @@ body {
   color: white;
 }
 
-.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
-  color: #971a30;
-  font-weight: 700;
-}
- .paginator::after, .paginator::before {
-  box-sizing: border-box;
-  color: #971a30;
-  font-weight: 700;
+@keyframes inwards-open {
+  0%   { transform: rotate(0deg) ; }
+  100% { transform: rotate(90deg) ; }
 }
 
-.mat-select-value-text{
-  color: #971a30 ;
-  font-weight: 700;
-}
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
-  color: #971a30;
-  font-weight: 700;
+@keyframes inwards-close {
+  0%   { transform: rotate(0deg) !important; }
+  100% { transform: rotate(90deg) !important; }
 }
 
-.mat-select-arrow {
-  color: #971a30;
-  font-weight: 700;
+.rotate {
+  transform: rotate(90deg) ;
+  transition: 225ms;
+}
+.reverse {
+  transform: rotate(0deg) ;
+  transition: 225ms;
 }
 
-.mat-option.mat-active {
-  background: rgba(0, 0, 0, 0.04);
-  // color: #971a30;
-  font-weight: 700;
-}
+// .openAnimate {
+//   animation: inwards-open 225ms linear !important;
+//   animation-fill-mode: forwards;
+// }
 
-.mat-option {
-  // color:#971a30;
-  font-weight: 700;
-}
-.mat-paginator-icon {
-  width: 28px;
-  fill: currentColor;
-  color: #971a30;
-  font-weight: 700;
-}
-
-::ng-deep .mat-select-value {
-  
-  font-weight: bold;
-  
-}
-.mat-drawer-inner-container{
-  overflow-y: auto !important; 
-  overflow-x: hidden !important;
-}
-.mat-drawer-inner-container::-webkit-scrollbar{
-  width: 4px;
-
-}
-
-.mat-drawer-inner-container::-webkit-scrollbar-thumb{
-  color: #971a30;
-}
-
-.add_btn{
-  color: white;
-}
+// .closeAnimate {
+//   animation: inwards-close 225ms linear !important;
+//   animation-fill-mode: forwards;
+// }
