@@ -57,7 +57,7 @@
           <mat-expansion-panel (opened)="openPanels(2)" [expanded]="openPanel2" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
-                <mat-icon>beenhere</mat-icon> <div class="exTitle">{{userManagement}}</div>
+                <mat-icon>person_pin</mat-icon> <div class="exTitle">{{userManagement}}</div>
               
               </mat-panel-title>
               <div><mat-icon class="indicator">chevron_right</mat-icon></div>
@@ -72,7 +72,7 @@
           <mat-expansion-panel (opened)="openPanels(3)" [expanded]="openPanel3" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
-                <mat-icon>beenhere</mat-icon> <div class="exTitle">{{customerManagement}}</div>
+                <mat-icon>person_outline</mat-icon> <div class="exTitle">{{customerManagement}}</div>
               
               </mat-panel-title>
               <div><mat-icon class="indicator">chevron_right</mat-icon></div>
@@ -95,7 +95,7 @@
           <mat-expansion-panel (opened)="openPanels(4)" [expanded]="openPanel4" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
-                <mat-icon>beenhere</mat-icon> <div class="exTitle">{{reports}}</div>
+                <mat-icon>local_printshop</mat-icon> <div class="exTitle">{{reports}}</div>
               
               </mat-panel-title>
               <div><mat-icon class="indicator">chevron_right</mat-icon></div>
@@ -117,7 +117,7 @@
               <div><mat-icon class="indicator">chevron_right</mat-icon></div>
             </mat-expansion-panel-header>
  
-        <li routerLink="Customer"  routerLinkActive="is-active"  class="side_list_item"><i class="fa fa-file"></i><div class="title"> {{customer}}</div></li>
+        <li routerLink="Customer"  routerLinkActive="is-active"  class="side_list_item"><mat-icon>person_outline</mat-icon><div class="title"> {{customer}}</div></li>
        
           </mat-expansion-panel>
         </mat-accordion>

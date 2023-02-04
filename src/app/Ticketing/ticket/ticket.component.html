@@ -1,6 +1,19 @@
+<mat-toolbar>
+
+  <mat-toolbar-row fxLayout.xs="column" fxLayoutGap.xs="20px" [dir]="direction" class="toolbar">
+
+    <section class="fontY">
+      {{header}}
+    </section>
+
+   
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
 <section class="ticket_container">
   <div class="tabs">
-    
+
     <div class="tabs_head">
       <div class="tabs_toggle" matBadge="{{badgeUnassigned}}" matBadgeOverlap="true" style="z-index: 6;">
       <span id="newticket" (click)="tabChange('newticket'); closeDet1()" class="{{id == 'newticket' ?  'tab_toggleactive': 'tab_toggle'}}" ><i class="far fa-file"></i><h6   matBadgeColor="warn"><strong>ticket</strong> </h6></span>

@@ -15,7 +15,14 @@
   justify-content: space-between;
   align-items: center;
 }
+.fontY {
+  font-size: 35px !important;
 
+  font-weight: lighter;
+}
+.toolbar {
+  background: white;
+}
 .sortfilterOptions{
   display: flex;
   justify-content: flex-end;

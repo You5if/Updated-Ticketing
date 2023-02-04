@@ -66,6 +66,7 @@ export class TicketComponent implements OnInit {
     close: string;
     closed: string;
     verify: string;
+    header: string;
     comments: any[]
 
     indexes: TicketModel[]
@@ -220,6 +221,7 @@ export class TicketComponent implements OnInit {
       this.toDate = "To date"
       this.agentL = "Agent:"
       this.category = "Category"
+      this.header = "Tickets"
       this.categoryL = "Cat. :"
       this.assignedBtn = "Assign"
       this.transfer = "Transfer"
@@ -237,6 +239,7 @@ export class TicketComponent implements OnInit {
       this.newTicket = "جديد"
       this.assignedTicket = "مكلفة الى"
       this.acceptBtn = "قبول"
+      this.header = "البطاقات"
       this.fromDate = "من تاريخ"
       this.toDate = "الى تاريخ"
       this.assignedBtn = "تعيين"
