@@ -39,8 +39,8 @@
         
         <li (click)="onClickListItem('BP')" fxHide class="side_list_item"><mat-icon>person</mat-icon><div class="title"> {{businessP}}</div></li>
         
-        <mat-accordion *ngIf="role === '2'">
-          <mat-expansion-panel (opened)="openPanels(1)" [expanded]="openPanel1" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
+        <mat-accordion >
+          <mat-expansion-panel *ngIf="role === '2'" (opened)="openPanels(1)" [expanded]="openPanel1" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon>account_box</mat-icon> <div class="exTitle">{{subSystem}}</div>
@@ -54,7 +54,7 @@
        
         
         
-          <mat-expansion-panel (opened)="openPanels(2)" [expanded]="openPanel2" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
+          <mat-expansion-panel *ngIf="role === '2'" (opened)="openPanels(2)" [expanded]="openPanel2" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon>person_pin</mat-icon> <div class="exTitle">{{userManagement}}</div>
@@ -69,7 +69,7 @@
         
       
        
-          <mat-expansion-panel (opened)="openPanels(3)" [expanded]="openPanel3" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
+          <mat-expansion-panel *ngIf="role === '2' || role === '3' || role === '4' || role === '5' || role === '6' || admin === '203' || admin === '26' || admin === '206' || admin === '148' || admin === '147' || admin === '209' " (opened)="openPanels(3)" [expanded]="openPanel3" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon>person_outline</mat-icon> <div class="exTitle">{{customerManagement}}</div>
@@ -108,7 +108,7 @@
         
         <!-- <mat-divider ></mat-divider> -->
      
-          <mat-expansion-panel (opened)="openPanels(5)" [expanded]="openPanel5" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
+          <mat-expansion-panel *ngIf="role === '2'" (opened)="openPanels(5)" [expanded]="openPanel5" class="mat-elevation-z0" hideToggle appCustomMatExpansionToggle>
             <mat-expansion-panel-header [@.disabled]="true">
               <mat-panel-title>
                 <mat-icon>beenhere</mat-icon> <div class="exTitle">{{crm}}</div>
