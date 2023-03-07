@@ -1418,7 +1418,7 @@ creationSort(sortString: string) {
            this.comments.forEach((com) => {
              com.crDate = com.crDate.replace('T', ' ')
              if (com.commentType === "ATTACH") {
-               com.apiImagePath = "http://ticketingapi.autopay-mcs.com/" + com.apiImagePath
+               com.apiImagePath = this._globals.baseAPIFileUrl + com.apiImagePath
              }
            })
            // console.log(this.comments);
@@ -1455,7 +1455,7 @@ creationSort(sortString: string) {
       //      this.comments.forEach((com) => {
       //        com.crDate = com.crDate.replace('T', ' ')
       //        if (com.commentType === "ATTACH") {
-      //          com.apiImagePath = "http://ticketingapi.autopay-mcs.com/" + com.apiImagePath
+      //          com.apiImagePath = this._globals.baseAPIFileUrl + com.apiImagePath
       //        }
       //      })
       //      // console.log(this.comments);
@@ -1491,7 +1491,7 @@ creationSort(sortString: string) {
           this.comments.forEach((com) => {
             com.crDate = com.crDate.replace('T', ' ')
             if (com.commentType === "ATTACH") {
-              com.apiImagePath = "http://ticketingapi.autopay-mcs.com/" + com.apiImagePath
+              com.apiImagePath = this._globals.baseAPIFileUrl + com.apiImagePath
             }
           })
           // console.log(this.comments);
